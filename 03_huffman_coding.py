@@ -16,7 +16,6 @@ def huffman_encoding(data):
     freqs = {}
     for char in data:
         freqs[char] = freqs.get(char, 0) + 1
-    print('Encoding', freqs)
 
     # 2) sort nodes by frequency, use a tree and (list or mini heap)
     q = queue.PriorityQueue()
@@ -47,8 +46,6 @@ def huffman_encoding(data):
 
     traverse(root, '')
 
-    # for k, freq in freqs.items(): print(k, freq.code)
-
     # 8) encode string as bytes?
     encoded_data = ''
     for char in data: encoded_data += freqs[char].code
@@ -56,6 +53,7 @@ def huffman_encoding(data):
 
 def huffman_decoding(data, tree):
     codes = {}
+    lengths = []
     def traverse(node):
         if node.left:
             traverse(node.left)
@@ -63,44 +61,30 @@ def huffman_decoding(data, tree):
             traverse(node.right)
         if node.char:
             codes[node.code] = node.char
+            lengths.append(len(node.code))
 
     traverse(tree)
-    print('Decoding:', codes)
 
     # get the max key (code) to compare first
-    keys = list(codes.keys())
-    max_len = len(keys[0])
-    min_len = len(keys[0])
-    for code in keys:
-        if len(code) > max_len:
-            max_len = len(code)
-
-        if len(code) < min_len:
-            min_len = len(code)
+    max_len = max(lengths)
+    min_len = min(lengths)
 
     # lookup from max length to min values in the codes
-    solution = ''
+    chars = []
     start_index = 0
-    end_index = 0
-    print(len(data))
-    while True: # (end_index - start_index) >= min_len and end_index <=  len(code):
-        start_index = end_index
-        end_index = start_index + max_len
+    while start_index < len(data):
 
-        while True:
-            possible_char_code = data[start_index:end_index]
-            print(start_index, '-', end_index, ':', possible_char_code)
-            if start_index > len(data): # len(possible_char_code) < min_len:
-                return solution
-                raise('Too Small Sir')
-
-            char = codes.get( possible_char_code )
-
-            if char is None:
-                end_index -= 1
-            else:
-                solution += char
+        for i in range(min_len, max_len + 1):
+            end_index = start_index + i
+            char = codes.get( data[ start_index : end_index ] )
+            if char is not None:
                 break
+
+        chars.append(char)
+        start_index = end_index
+
+    return ''.join(chars)
+
 
 if __name__ == "__main__":
     codes = {}
