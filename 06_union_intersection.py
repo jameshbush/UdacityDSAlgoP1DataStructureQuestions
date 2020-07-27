@@ -42,12 +42,26 @@ class LinkedList:
         return size
 
 def union(llist_1, llist_2):
-    # Your Solution Here
-    pass
+    union = set()
+    for node in (llist_1.head, llist_2.head):
+        while node:
+            union.add(node.value)
+            node = node.next
+    return list(union)
 
-def intersection(llist_1, llist_2):
-    # Your Solution Here
-    pass
+
+def intersection(llist_1, llist_2):    
+    node_1 = llist_1.head
+    node_2 = llist_2.head
+    set_1 = set()
+    set_2 = set()
+    while node_1:
+        set_1.add(node_1.value)
+        node_1 = node_1.next
+    while node_2:
+        set_2.add(node_2.value)
+        node_2 = node_2.next
+    return set_1.intersection(set_2)
 
 
 # Test case 1
@@ -64,8 +78,13 @@ for i in element_1:
 for i in element_2:
     linked_list_2.append(i)
 
-print (union(linked_list_1,linked_list_2))
-print (intersection(linked_list_1,linked_list_2))
+actual = union(linked_list_1, linked_list_2)
+expect = [1, 2, 3, 4, 6, 9, 11, 21, 32, 35, 65]
+assert(set(actual) == set(expect))
+
+actual = intersection(linked_list_1, linked_list_2)
+expect = [4, 6, 21]
+assert(set(actual) == set(expect))
 
 # Test case 2
 
@@ -81,5 +100,10 @@ for i in element_1:
 for i in element_2:
     linked_list_4.append(i)
 
-print (union(linked_list_3,linked_list_4))
-print (intersection(linked_list_3,linked_list_4))
+actual = union(linked_list_3, linked_list_4)
+expect = [1, 2, 3, 4, 6, 7, 8, 9, 11, 21, 23, 35, 65]
+assert(set(actual) == set(expect))
+
+actual = intersection(linked_list_3, linked_list_4)
+expect = []
+assert(set(actual) == set(expect))

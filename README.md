@@ -18,3 +18,6 @@ Recursive solution traverses a user group hierarchy. It determines if a user bel
 
 ### [blockchain](./05_blockchain.py)
 Fun chanlenge to practice linked lists and hashing functions.
+
+### [Union and Intersection of Two Linked Lists](./06_union_intersection.py)
+Iterates through linked lists finding union and intersection.
