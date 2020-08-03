@@ -1,5 +1,7 @@
 # Data Structures Project
 
+This course required implementing data structures to solve problems. I used Linked Lists, Queues, Priority Queues, and Binary Trees. This work is my own. It is not a tutorial.
+
 ### [LRU Cache](./01_lru_cache.py)
 
 Implements Least Recently Used Caching algorithm similar to this [Python functools decorator](https://docs.python.org/3/library/functools.html#functools.lru_cache). My cache tracks the most recently used elements with a Linked List Queue. It refreshes elements in queue in constant O(1) time using a hash map.
