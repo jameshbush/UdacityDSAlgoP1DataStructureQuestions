@@ -1,6 +1,6 @@
 # Data Structures Project
 
-This course required implementing data structures to solve problems. I used Linked Lists, Queues, Priority Queues, and Binary Trees. This work is my own. It is not a tutorial.
+This course required implementing data structures to solve problems. I used Linked Lists, Queues, Priority Queues, and Binary Trees. This work is my own. It is not a tutorial. If you want to get a sense of my ability, I recommend looking at the LRU Cache, and Huffman Coding files.
 
 ### [LRU Cache](./01_lru_cache.py)
 
@@ -18,7 +18,7 @@ Uses a priority queue [docs](https://docs.python.org/3/library/asyncio-queue.htm
 ### [Active Directory](./04_active_directory.py)
 Recursive solution traverses a user group hierarchy. It determines if a user belongs to a group directly or if their group (recoursively) belongs to a group.
 
-### [blockchain](./05_blockchain.py)
+### [Blockchain](./05_blockchain.py)
 Fun chanlenge to practice linked lists and hashing functions.
 
 ### [Union and Intersection of Two Linked Lists](./06_union_intersection.py)
